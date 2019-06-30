@@ -1,11 +1,5 @@
 <div class="page">
-    <mat-toolbar color="primary">
-            <span> The One Stop Shop </span>
-            <span class="padding-spacer"></span>
-            <button class="icon-button" mat-icon-button (click)="openAbout()">
-                    <mat-icon>info</mat-icon>
-            </button>
-    </mat-toolbar>
+    <app-general-nav-bar></app-general-nav-bar>
     <app-error-banner [errorMessage]="errorMessage" *ngIf="error"></app-error-banner>
     <div class="absoluteCenter">
     <mat-card class="sign-card"> 
@@ -32,7 +26,7 @@
                 <mat-icon>input</mat-icon>
                 Sign In
             </button>
-            <button mat-raised-button>
+            <button mat-raised-button (click)="goToSignUp()">
                 <mat-icon>launch</mat-icon>
                 Sign Up
             </button>

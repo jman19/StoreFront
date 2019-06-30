@@ -12,7 +12,7 @@ export class StoreComponent implements OnInit {
   constructor(private router:Router,private cookieService:CookieService) {
     //if the user has not logged in redirect them to login page
     if(!cookieService.check(AppConstants.jwtCookieName)){
-      router.navigate(['/signIn']);
+      router.navigate(['/'+AppConstants.signInPath]);
     }
   }
 

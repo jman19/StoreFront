@@ -13,6 +13,8 @@ import { AboutComponent } from './about/about.component';
 import { ErrorBannerComponent } from './error-banner/error-banner.component'
 import { CookieService } from 'ngx-cookie-service';
 import { StoreComponent } from './store/store.component';
+import { GeneralNavBarComponent } from './general-nav-bar/general-nav-bar.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { StoreComponent } from './store/store.component';
     SignInComponent,
     AboutComponent,
     ErrorBannerComponent,
-    StoreComponent
+    StoreComponent,
+    GeneralNavBarComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

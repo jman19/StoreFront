@@ -17,13 +17,14 @@ export class RestService {
 
   constructor(private http:HttpClient) { }
 
-  private extractData(res: Response) {
-    let body = res;
-    return body || { };
-  }
-
-  login(email:string,password:string): Observable<any>{
+  login(email:string,password:string): Observable<loginResponse>{
     var body={email:email,password:password}
-    return this.http.post(base+'/login',JSON.stringify(body),httpOptions).pipe(map(this.extractData));
+    return this.http.post<loginResponse>(base+'/login',JSON.stringify(body),httpOptions);
   }
+}
+
+export interface loginResponse{
+  jwt:string,
+  expires:number,
+  code:number
 }

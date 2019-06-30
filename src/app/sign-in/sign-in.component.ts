@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from '../rest.service';
 import {FormControl, Validators,FormGroup} from '@angular/forms';
-import {AboutComponent} from '../about/about.component'
 import { CookieService } from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {AppConstants} from '../appConstants'
@@ -30,10 +29,10 @@ export class SignInComponent implements OnInit {
     console.log("clicked");
     if(this.signInForm.valid){
       this.rest.login(this.email.value,this.password.value).subscribe(res=>{
-        //save the jwt token as a cookie
-        this.cookieService.set(AppConstants.jwtCookieName,res.message);
+        //save the jwt token as a cookie and set the expire date of it to the same as jwt
+        this.cookieService.set(AppConstants.jwtCookieName,res.jwt,new Date(res.expires));
         this.signInForm.reset();
-        this.router.navigate(['/store']);
+        this.router.navigate(['/'+AppConstants.storePath]);
       },err=>{
         this.error=true;
         this.errorMessage=err.error.message;
@@ -46,14 +45,15 @@ export class SignInComponent implements OnInit {
     }
   }
 
-  openAbout(){
-    this.about.openDialog();
+  goToSignUp(){
+    this.signInForm.reset();
+    this.router.navigate(['/'+AppConstants.signUpPath]);
   }
-  constructor(private rest:RestService,private about:AboutComponent,
-    private cookieService:CookieService,private router:Router) {
+
+  constructor(private rest:RestService, private cookieService:CookieService,private router:Router) {
       //if the cookie exist navigate user to store since they are already logged in
       if (cookieService.check(AppConstants.jwtCookieName)){
-        this.router.navigate(['/store']);
+        this.router.navigate(['/'+AppConstants.storePath]);
       }
     }
 
@@ -65,6 +65,7 @@ export class SignInComponent implements OnInit {
       email:this.email,
       password:this.password
     })
+    //if the user edits form again hide the old error message
     this.signInForm.valueChanges.subscribe(change=>{
       this.error=false;
     })

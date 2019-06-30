@@ -15,7 +15,7 @@ export class TopNavBarComponent implements OnInit {
   //this logs the user out and redirects them to the signIn page
   logOut(){
     this.cookieService.delete(AppConstants.jwtCookieName);
-    this.router.navigate(['/signIn']);
+    this.router.navigate(['/'+AppConstants.signInPath]);
   }
 
   ngOnInit() {
