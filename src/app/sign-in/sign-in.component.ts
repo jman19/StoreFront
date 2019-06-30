@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {RestService} from '../rest.service';
 import {FormControl, Validators,FormGroup} from '@angular/forms';
 import {AboutComponent} from '../about/about.component'
+import { CookieService } from 'ngx-cookie-service';
+import {Router} from '@angular/router';
+import {AppConstants} from '../appConstants'
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +17,6 @@ export class SignInComponent implements OnInit {
   signInForm:FormGroup;
   error:boolean;
   errorMessage:string;
-
   getEmailErrorMessage(){
     return this.email.hasError('required') ? 'You must enter a value' :
         this.email.hasError('email') ? 'Not a valid email' :
@@ -28,7 +30,10 @@ export class SignInComponent implements OnInit {
     console.log("clicked");
     if(this.signInForm.valid){
       this.rest.login(this.email.value,this.password.value).subscribe(res=>{
-        console.log(res)
+        //save the jwt token as a cookie
+        this.cookieService.set(AppConstants.jwtCookieName,res.message);
+        this.signInForm.reset();
+        this.router.navigate(['/store']);
       },err=>{
         this.error=true;
         this.errorMessage=err.error.message;
@@ -44,7 +49,13 @@ export class SignInComponent implements OnInit {
   openAbout(){
     this.about.openDialog();
   }
-  constructor(private rest:RestService,private about:AboutComponent) {}
+  constructor(private rest:RestService,private about:AboutComponent,
+    private cookieService:CookieService,private router:Router) {
+      //if the cookie exist navigate user to store since they are already logged in
+      if (cookieService.check(AppConstants.jwtCookieName)){
+        this.router.navigate(['/store']);
+      }
+    }
 
   ngOnInit() {
     this.error=false;

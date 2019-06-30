@@ -11,13 +11,16 @@ import { HttpClientModule }    from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { ErrorBannerComponent } from './error-banner/error-banner.component'
+import { CookieService } from 'ngx-cookie-service';
+import { StoreComponent } from './store/store.component';
 @NgModule({
   declarations: [
     AppComponent,
     TopNavBarComponent,
     SignInComponent,
     AboutComponent,
-    ErrorBannerComponent
+    ErrorBannerComponent,
+    StoreComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { ErrorBannerComponent } from './error-banner/error-banner.component'
     MatDialogModule
   ],
   entryComponents:[AboutComponent],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
