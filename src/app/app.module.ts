@@ -15,6 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { StoreComponent } from './store/store.component';
 import { GeneralNavBarComponent } from './general-nav-bar/general-nav-bar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule
   ],
   entryComponents:[AboutComponent],
   providers: [CookieService],

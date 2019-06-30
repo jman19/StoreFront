@@ -21,6 +21,11 @@ export class RestService {
     var body={email:email,password:password}
     return this.http.post<loginResponse>(base+'/login',JSON.stringify(body),httpOptions);
   }
+
+  signUp(email:string,password:string): Observable<loginResponse>{
+    var body={email:email,password:password}
+    return this.http.post<loginResponse>(base+'/signUp',JSON.stringify(body),httpOptions);
+  }
 }
 
 export interface loginResponse{

@@ -39,9 +39,8 @@ export class SignInComponent implements OnInit {
       });
     }else{
       this.error=true;
-      this.errorMessage="Please correct Errors indicated";
+      this.errorMessage="Please Correct Errors Indicated";
       this.signInForm.markAllAsTouched();
-      this.signInForm.setErrors({'invalid':true});
     }
   }
 
