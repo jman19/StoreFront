@@ -2,8 +2,6 @@
     max-width: 400px;
     min-width: 400px;
     margin: auto;
-    width: 50%;
-    top: 20%
 }
 .center {
     margin: auto;
@@ -18,11 +16,15 @@
 .page{
     background-size: cover;
     background-position: center;
-    height:100%; 
-    min-height: 700px;
+    height:100vh; 
     background-color: transparent;
     width:auto;
-    background-image: url("../../assets/signInStore.jpg")
+    background-image: url("../../assets/signInStore.jpg");
+    overflow-y: hidden;
+    display: flex;
+    overflow-y: hidden;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .scrollDiv{
@@ -33,4 +35,12 @@
     width: 100%;
 }
 
+.content{
+    min-height: 100%;
+}
+
+.spacer{
+    height: 50px;
+    min-height: 50px;
+}
   
