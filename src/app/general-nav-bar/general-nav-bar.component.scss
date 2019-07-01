@@ -1,4 +1,9 @@
-@import "../../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 .padding-spacer {
     flex: 1 1 auto;
   }
+
+  .mat-toolbar.mat-primary {
+    background: #33383b;
+    color: #ffffff;
+  }
+

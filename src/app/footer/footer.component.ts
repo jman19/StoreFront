@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import {AboutComponent} from '../about/about.component';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private about:AboutComponent,private matIconRegistry: MatIconRegistry,private domSanitizer: DomSanitizer) {
+    this.matIconRegistry.addSvgIcon(
+      'github',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/Octicons-mark-github.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'linkedin',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/linkedin.svg')
+    );
+  }
+
+  openAbout(){
+    this.about.openDialog();
+  }
 
   ngOnInit() {
   }
