@@ -39,9 +39,11 @@ export interface loginResponse{
 }
 
 export interface productResponse{
-  [index:number]:{
-    title:string,
-    price:number,
-    inventoryCount:number
-  }
+  products:product[]
+}
+
+export interface product{
+  title:string,
+  price:number,
+  inventoryCount:number
 }

@@ -10,19 +10,19 @@
                 </button>
             </div>
             <mat-menu #showOutOfStock>
-                <button mat-menu-item>Show Out Of Stock</button>
-                <button mat-menu-item>Hide Out Of Stock</button>
+                <button mat-menu-item (click)="getProductsOptions(false)">Show Out Of Stock</button>
+                <button mat-menu-item (click)="getProductsOptions(true)">Hide Out Of Stock</button>
             </mat-menu>
-            <mat-card class="shopCatalog"> 
+            <mat-card class="shopCatalog">
+                <div *ngIf="!products">We Had An Issue Checking Our Inventory Please Refresh</div> 
+                <div *ngIf="products?.length==0">Looks Like We Are Out of Products At The Moment</div> 
                 <div class="productRow" fxLayoutGap="32px">
-                    <app-product-card title="Gum" inventory=0></app-product-card>
-                    <app-product-card title="Shoes" inventory=10></app-product-card>
-                    <app-product-card title="Phone" inventory=100></app-product-card>
-                    <app-product-card title=Flipper inventory=0></app-product-card>
-                    <app-product-card title=GPS inventory=0></app-product-card>
-                    <app-product-card title=Cookies inventory=10></app-product-card>
-                    <app-product-card title=Doll inventory=100></app-product-card>
-                    <app-product-card title=Paper inventory=30></app-product-card>
+                    <app-product-card 
+                    *ngFor="let product of products" 
+                    [title]="product.title" 
+                    [inventory]="product.inventoryCount" 
+                    [price]="product.price">
+                    </app-product-card>
                 </div>
             </mat-card>
             <div>
