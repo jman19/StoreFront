@@ -2,7 +2,6 @@
     max-width: 400px;
     min-width: 400px;
     margin: auto;
-    width: 50%;
 }
 .center {
     margin: auto;
@@ -17,17 +16,30 @@
 .page{
     background-size: cover;
     background-position: center;
-    height:100%; 
+    height:100vh; 
     background-color: transparent;
     width:auto;
-    background-image: url("../../assets/signUpShopping.jpg")
+    background-image: url("../../assets/signUpShopping.jpg");
+    overflow-y: hidden;
+    display: flex;
+    overflow-y: hidden;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.absoluteCenter {
+.scrollDiv{
+    overflow-y: auto;
     margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+}
+
+.content{
+    min-height: 100%;
+}
+
+.spacer{
+    height: 50px;
+    min-height: 50px;
+}
