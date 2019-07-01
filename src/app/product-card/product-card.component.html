@@ -1,7 +1,8 @@
 <mat-card class="productCard" (click)="moreDetail()">
     <mat-card-header>
-        <mat-card-title>product example</mat-card-title>
-        <mat-card-subtitle>Instock</mat-card-subtitle>
+        <mat-card-title>{{title}}</mat-card-title>
+        <mat-card-subtitle *ngIf="getInStock()" style="color: green">{{getStockText()}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="!getInStock()" style="color: red">{{getStockText()}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image class="productPhoto" src="../../assets/No_image_available.png" alt="Photo of product">
 </mat-card>

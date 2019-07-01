@@ -22,7 +22,7 @@ export class StoreComponent implements OnInit {
 
   ngOnInit() {
     this.pageSize=8;
-    this.length=30;
+    this.length=8;
   }
 
 }
