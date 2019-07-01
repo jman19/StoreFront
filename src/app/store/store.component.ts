@@ -9,6 +9,8 @@ import {AppConstants} from '../appConstants'
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
+  pageSize:number;
+  length:number;
   constructor(private router:Router,private cookieService:CookieService) {
     //if the user has not logged in redirect them to login page
     if(!cookieService.check(AppConstants.jwtCookieName)){
@@ -19,6 +21,8 @@ export class StoreComponent implements OnInit {
   
 
   ngOnInit() {
+    this.pageSize=8;
+    this.length=30;
   }
 
 }

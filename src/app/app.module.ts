@@ -17,6 +17,7 @@ import { GeneralNavBarComponent } from './general-nav-bar/general-nav-bar.compon
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FooterComponent } from './footer/footer.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     StoreComponent,
     GeneralNavBarComponent,
     SignUpComponent,
-    FooterComponent
+    FooterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

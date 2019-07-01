@@ -3,7 +3,28 @@
     <div class="scrollDiv">
         <div class="content">
             <div class="storeBanner"></div>
-            <mat-card style="min-height: 200px;background-color: #C6C6C6;"> </mat-card>
+            <div style="text-align: right">
+                <button mat-raised-button  style="margin-right: 30px" [matMenuTriggerFor]="showOutOfStock">
+                    <mat-icon>list</mat-icon>
+                    Options
+                </button>
+            </div>
+            <mat-menu #showOutOfStock>
+                <button mat-menu-item>Show Out Of Stock</button>
+                <button mat-menu-item>Hide Out Of Stock</button>
+            </mat-menu>
+            <mat-card class="shopCatalog"> 
+                <div class="productRow" fxLayoutGap="32px">
+                    <app-product-card></app-product-card>
+                    <app-product-card></app-product-card>
+                    <app-product-card></app-product-card>
+                    <app-product-card></app-product-card>
+                    <app-product-card></app-product-card>
+                    <app-product-card></app-product-card>
+                    <app-product-card></app-product-card>
+                    <app-product-card></app-product-card>
+                </div>
+            </mat-card>
             <div>
                 <mat-paginator [length]="length"
                     [pageSize]="pageSize"
