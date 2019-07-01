@@ -1,0 +1,40 @@
+.body{
+    display: flex;
+    overflow-y: hidden;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.content{
+    min-height: 100%;
+}
+.storeBanner{
+    width: 95%;
+    height: 200px;
+    min-width: 300px;
+    background-color: transparent;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-size: 100%,100%;
+    background-position: center,center;
+    background-image: url("../../assets/ecommerice.jpg");
+}
+.centerText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+
+.scrollDiv{
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+}
+.spacer{
+    height: 50px;
+    min-height: 50px;
+}
+

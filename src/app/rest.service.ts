@@ -26,10 +26,22 @@ export class RestService {
     var body={email:email,password:password}
     return this.http.post<loginResponse>(base+'/signUp',JSON.stringify(body),httpOptions);
   }
+
+  getProducts(hideOutOfStock:boolean): Observable<productResponse>{
+    return this.http.get<productResponse>(base+'/product'+'?'+'hideOutOfStock='+hideOutOfStock,httpOptions);
+  }
 }
 
 export interface loginResponse{
   jwt:string,
   expires:number,
   code:number
+}
+
+export interface productResponse{
+  [index:number]:{
+    title:string,
+    price:number,
+    inventoryCount:number
+  }
 }

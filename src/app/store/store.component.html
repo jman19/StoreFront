@@ -1,1 +1,19 @@
-<app-top-nav-bar></app-top-nav-bar>
+<body class="body">
+    <app-top-nav-bar></app-top-nav-bar>
+    <div class="scrollDiv">
+        <div class="content">
+            <div class="storeBanner"></div>
+            <mat-card style="min-height: 200px;background-color: black"> </mat-card>
+            <div>
+                <mat-paginator [length]="length"
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="pageEvent = $event">
+                </mat-paginator>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <app-footer></app-footer>   
+    </div>
+</body>
+

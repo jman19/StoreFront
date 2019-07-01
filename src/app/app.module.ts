@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './top-nav-bar/top-nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule,MatButtonModule,MatIconModule,MatToolbarModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatCardModule} from '@angular/material';
+import {MatPaginatorModule,MatDialogModule,MatButtonModule,MatIconModule,MatToolbarModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatCardModule} from '@angular/material';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule }    from '@angular/common/http';
@@ -16,6 +16,7 @@ import { StoreComponent } from './store/store.component';
 import { GeneralNavBarComponent } from './general-nav-bar/general-nav-bar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     ErrorBannerComponent,
     StoreComponent,
     GeneralNavBarComponent,
-    SignUpComponent
+    SignUpComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatPaginatorModule
   ],
   entryComponents:[AboutComponent],
   providers: [CookieService],
