@@ -50,6 +50,11 @@ export class RestService {
     };
     return this.http.patch<statusMessage>(base+'/cart',JSON.stringify(items),httpAuth);
   }
+
+  //get basic product info such as price for a specific product
+  getSpecificProduct(product:string): Observable<product>{
+    return this.http.get<product>(base+'/product/{{product}}',httpOptions);
+  }
 }
 
 export interface loginResponse{

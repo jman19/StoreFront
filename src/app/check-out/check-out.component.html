@@ -1,0 +1,24 @@
+<body class="body">
+    <app-top-nav-bar></app-top-nav-bar>
+    <div class="scrollDiv">
+        <div class="content">
+            <!--Dont load checkOut list until products and prices have been fetched-->
+            <mat-list *ngIf="productsList && prices">
+                <h3 mat-subheader>Items</h3>
+                <mat-list-item *ngFor="let product of productsList" style="min-height: 90px">
+                    <app-product-row product={{product}} amount={{getItemAmount(product)}} 
+                    price={{getProductPrice(product)}}></app-product-row>
+                    <div style="min-height: 30px;"></div>
+                    <mat-divider style="margin-top: 100px;"></mat-divider>
+                </mat-list-item>
+            </mat-list>
+            <div class="flexContainer" fxLayoutAlign="end" fxLayoutGap="32px">
+                <div class="totalDisplay" style="margin-right: 10px;">
+                    Total: {{cart?.totalCost | currency: 'CAD'}}
+                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <app-footer></app-footer>   
+    </div>
+</body>

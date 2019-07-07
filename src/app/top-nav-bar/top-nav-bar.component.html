@@ -10,10 +10,10 @@
    <mat-menu #LoginMenu>
         <button mat-menu-item (click)="logOut()">LogOut</button>
     </mat-menu>
-   <button class="icon-button" mat-icon-button>
+   <button class="icon-button" mat-icon-button (click)="store()">
         <mat-icon>store</mat-icon>
    </button>
-   <button mat-raised-button matBadge={{items}} matBadgePosition="before" matBadgeColor="accent">
+   <button mat-raised-button matBadge={{items}} matBadgePosition="before" matBadgeColor="accent" (click)="checkOut()">
        <mat-icon>shopping_cart</mat-icon>
        Checkout
    </button>

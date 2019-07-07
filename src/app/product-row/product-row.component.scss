@@ -1,0 +1,20 @@
+.flexContainer{
+    flex-direction: row;
+    display: flex;
+}
+
+.mat-form-field{
+    width: 100px;
+}
+
+.mat-form-field.mat-form-field {
+    font-size: 14px;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }

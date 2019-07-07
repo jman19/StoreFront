@@ -3,4 +3,5 @@ export class AppConstants{
     public static signInPath: string= "signIn";
     public static signUpPath: string= "signUp";
     public static storePath: string= "store";
+    public static checkOutPath: string="checkOut";
 }

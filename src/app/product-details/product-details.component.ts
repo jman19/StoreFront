@@ -4,8 +4,8 @@ import {RestService, addItems} from '../rest.service';
 import { CookieService } from 'ngx-cookie-service';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AppConstants} from '../appConstants'
-import {GlobalEventsService} from '../global-events.service'
+import {AppConstants} from '../appConstants';
+import {GlobalEventsService} from '../global-events.service';
 
 @Component({
   selector: 'app-product-details',

@@ -1,0 +1,18 @@
+<div class="flexContainer" fxLayoutGap="25px">
+    <mat-form-field appearance="outline">
+        <input matInput placeholder={{amount}} type="number" min=1 [formControl]="amountForm">
+        <mat-error *ngIf="amountForm.invalid">Amount must be greater then 0</mat-error>
+    </mat-form-field>
+    
+    <button class="icon-button" mat-icon-button (click)="removeItemFromCart()">
+        <mat-icon>delete</mat-icon>
+    </button>
+     
+    <div  style="min-width: fit-content">
+        <p>{{product}}</p>     
+    </div>
+    <div>
+        <p><mat-card-subtitle>{{price | currency: 'CAD'}}</mat-card-subtitle></p>
+    </div>
+</div>
+

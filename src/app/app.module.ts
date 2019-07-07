@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './top-nav-bar/top-nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatBadgeModule,MatPaginatorModule,MatDialogModule,MatButtonModule,MatIconModule,MatToolbarModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatCardModule} from '@angular/material';
+import {MatDividerModule,MatListModule,MatBadgeModule,MatPaginatorModule,MatDialogModule,MatButtonModule,MatIconModule,MatToolbarModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatCardModule} from '@angular/material';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule }    from '@angular/common/http';
@@ -19,6 +19,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { FooterComponent } from './footer/footer.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { ProductRowComponent } from './product-row/product-row.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     SignUpComponent,
     FooterComponent,
     ProductCardComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CheckOutComponent,
+    ProductRowComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     MatDialogModule,
     FlexLayoutModule,
     MatPaginatorModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatListModule,
+    MatDividerModule
   ],
   entryComponents:[AboutComponent,ProductDetailsComponent],
   providers: [CookieService],

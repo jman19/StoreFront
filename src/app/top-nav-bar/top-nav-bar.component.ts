@@ -27,6 +27,14 @@ export class TopNavBarComponent implements OnInit {
     this.router.navigate(['/'+AppConstants.signInPath]);
   }
 
+  checkOut(){
+    this.router.navigate(['/'+AppConstants.checkOutPath]);
+  }
+
+  store(){
+    this.router.navigate(['/'+AppConstants.storePath]);
+  }
+
   getItemAmountInCart(){
     //if the user has not logged in redirect them to login page
     if(!this.cookieService.check(AppConstants.jwtCookieName)){
