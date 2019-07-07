@@ -30,6 +30,26 @@ export class RestService {
   getProducts(hideOutOfStock:boolean): Observable<productResponse>{
     return this.http.get<productResponse>(base+'/product'+'?'+'hideOutOfStock='+hideOutOfStock,httpOptions);
   }
+
+  getCart(bearer:string): Observable<cart>{
+    var httpAuth={
+      headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+bearer
+      })
+    };
+    return this.http.get<cart>(base+'/cart',httpAuth);
+  }
+
+  addItemsToCart(items:addItems,bearer:string): Observable<statusMessage>{
+    var httpAuth={
+      headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+bearer
+      })
+    };
+    return this.http.patch<statusMessage>(base+'/cart',JSON.stringify(items),httpAuth);
+  }
 }
 
 export interface loginResponse{
@@ -46,4 +66,18 @@ export interface product{
   title:string,
   price:number,
   inventoryCount:number
+}
+
+export interface cart{
+  items:{[key:string]:number},
+  totalCost:number
+}
+
+export interface addItems{
+  [key:string]:number
+}
+
+export interface statusMessage{
+  message:string,
+  code:number
 }

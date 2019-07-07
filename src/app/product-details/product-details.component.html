@@ -1,6 +1,9 @@
 <h2 mat-dialog-title>{{data.title}}</h2>
+<div style="margin-top: 15px;margin-bottom:15px;">
+    <app-error-banner [errorMessage]="errorMessage" *ngIf="error"></app-error-banner>
+</div>
+
 <div mat-dialog-content style="overflow-y: hidden;min-width: 600px;">
-    
     
     <div class="flexContainer" fxLayoutAlign="end" fxLayoutGap="32px">
         <img mat-card-image class="productPhoto" src="../../assets/No_image_available.png" alt="Photo of product">
@@ -8,7 +11,8 @@
             <mat-card-subtitle>{{data.price | currency: 'CAD'}}</mat-card-subtitle>
             <div>
                 <mat-form-field appearance="outline" hintLabel="Amount">
-                <input matInput placeholder="1" type="number">
+                    <input matInput placeholder="1" type="number" min=1 [formControl]="amount">
+                    <mat-error *ngIf="amount.invalid">Amount must be greater then 0</mat-error>
                 </mat-form-field>
 
                 <button mat-raised-button style="margin-left: 32px" (click)="addToCart()">
