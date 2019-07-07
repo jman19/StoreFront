@@ -18,6 +18,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FooterComponent } from './footer/footer.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     GeneralNavBarComponent,
     SignUpComponent,
     FooterComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
     FlexLayoutModule,
     MatPaginatorModule
   ],
-  entryComponents:[AboutComponent],
+  entryComponents:[AboutComponent,ProductDetailsComponent],
   providers: [CookieService],
   bootstrap: [AppComponent]
 })

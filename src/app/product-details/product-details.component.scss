@@ -1,0 +1,42 @@
+.productPhoto{
+    background-size: cover;
+    height: 350px;
+    width:300px;
+    max-width: 300px;
+    max-height: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.area{
+    max-width: 300px;
+    max-height: 350px;
+    height: 350px;
+    width:300px;
+}
+
+.textArea{
+    background-color:#F9F9FA;
+    width: 300px;
+    max-width: 300px;
+    max-height: 200px;
+    height: 200px;
+    margin-top: 25px;
+    white-space: pre-line;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.flexContainer{
+    flex-direction: row;
+    display: flex;
+}
+
+.mat-form-field{
+    width: 100px;
+}
+
+.mat-form-field.mat-form-field {
+    font-size: 14px;
+}

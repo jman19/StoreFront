@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<div mat-dialog-content style="overflow-y: hidden;">
+    
+    
+    <div class="flexContainer" fxLayoutAlign="end" fxLayoutGap="32px">
+        <img mat-card-image class="productPhoto" src="../../assets/No_image_available.png" alt="Photo of product">
+        <div class="area">
+            <mat-card-subtitle>{{data.price | currency: 'CAD'}}</mat-card-subtitle>
+            <div>
+                <mat-form-field appearance="outline" hintLabel="Amount">
+                <input matInput placeholder="1" type="number">
+                </mat-form-field>
+
+                <button mat-raised-button style="margin-left: 32px" (click)="addToCart()">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    Add To Cart
+                </button>
+            </div>
+            <div class="textArea" style="overflow:auto">
+                This is a discription
+            </div>
+        </div>
+    </div>
+    <div class="flexContainer" fxLayoutAlign="end" fxLayoutGap="32px">
+        
+        
+        
+    </div>
+    
+</div>

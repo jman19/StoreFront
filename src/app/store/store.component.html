@@ -18,7 +18,7 @@
                 <div *ngIf="products?.length==0">Looks Like We Are Out of Products At The Moment</div> 
                 <div class="productRow" fxLayoutGap="32px">
                     <app-product-card 
-                    *ngFor="let product of products" 
+                    *ngFor="let product of currentPage" 
                     [title]="product.title" 
                     [inventory]="product.inventoryCount" 
                     [price]="product.price">
@@ -29,7 +29,8 @@
                 <mat-paginator [length]="length"
                     [pageSize]="pageSize"
                     [pageSizeOptions]="pageSizeOptions"
-                    (page)="pageEvent = $event">
+                    (page)="onPageChange($event)"
+                    #paginator>
                 </mat-paginator>
             </div>
         </div>

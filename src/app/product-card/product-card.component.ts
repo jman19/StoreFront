@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild} from '@angular/core';
+import {ProductDetailsComponent} from '../product-details/product-details.component'
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-card',
@@ -10,13 +12,15 @@ export class ProductCardComponent implements OnInit {
   @Input() inventory:number;
   @Input() price:number;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
   moreDetail(){
     console.log("clicked on product")
+    this.dialog.open(ProductDetailsComponent,{data:{title:this.title,price:this.price,description:"test"}});
+
   }
 
   getInStock():boolean{
