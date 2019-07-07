@@ -33,9 +33,9 @@ export class ProductDetailsComponent implements OnInit {
       this.router.navigate(['/'+AppConstants.signInPath]);
     }
     if(this.amount.valid){
-      var item:addItems={}
+      var item={};
       item[this.data.title]=this.amount.value;
-      this.rest.addItemsToCart(item,this.cookieService.get(AppConstants.jwtCookieName)).subscribe(res=>{
+      this.rest.addItemsToCart({"items":item,"set":false},this.cookieService.get(AppConstants.jwtCookieName)).subscribe(res=>{
         this.dialogRef.close();
         this.globalEvents.add();
       },err=>{

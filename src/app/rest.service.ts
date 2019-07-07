@@ -74,7 +74,8 @@ export interface cart{
 }
 
 export interface addItems{
-  [key:string]:number
+  items:{[key:string]:number},
+  set:boolean
 }
 
 export interface statusMessage{
