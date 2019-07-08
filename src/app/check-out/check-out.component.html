@@ -1,8 +1,8 @@
 <body class="body">
     <app-top-nav-bar></app-top-nav-bar>
     <div class="scrollDiv">
-        <div class="content">
-            <!--Dont load checkOut list until products and prices have been fetched-->
+        <!--Dont load checkOut list until products and prices have been fetched and only load this section if user has stuff in cart-->
+        <div class="content" *ngIf="productsList && prices && productsList.length>0">
             <mat-list *ngIf="productsList && prices">
                 <h3 mat-subheader>Items</h3>
                 <mat-list-item *ngFor="let product of productsList" style="min-height: 90px">
@@ -16,6 +16,16 @@
                 <div class="totalDisplay" style="margin-right: 10px;">
                     Total: {{cart?.totalCost | currency: 'CAD'}}
                 </div>
+            </div>
+        </div>
+        <!--Inform user they have no items in cart-->
+        <div class="content" *ngIf="productsList && prices && productsList.length==0">
+            <div class="message">
+                No Items In Cart 
+                <button  style="margin-left: 35px" mat-raised-button matBadge={{items}} matBadgePosition="before" matBadgeColor="accent" (click)="backToStore()">
+                    <mat-icon>store</mat-icon>
+                    Back To Store
+                </button>
             </div>
         </div>
         <div class="spacer"></div>

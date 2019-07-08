@@ -66,4 +66,8 @@ export class CheckOutComponent implements OnInit {
 
   }
 
+  backToStore(){
+    this.router.navigate(['/'+AppConstants.storePath]);
+  }
+
 }
