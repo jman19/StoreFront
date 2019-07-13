@@ -4,6 +4,8 @@ import { CookieService } from 'ngx-cookie-service';
 import {AppConstants} from '../appConstants'
 import {RestService,cart,product} from '../rest.service';
 import {GlobalEventsService} from '../global-events.service';
+import {MatDialog} from '@angular/material/dialog';
+import {PurchaseComponent} from '../purchase/purchase.component';
 
 @Component({
   selector: 'app-check-out',
@@ -15,7 +17,7 @@ export class CheckOutComponent implements OnInit {
   productsList:string[];
   prices:product[];
 
-  constructor(private rest:RestService,private router:Router,private cookieService:CookieService,private globalEvents:GlobalEventsService) {
+  constructor(public dialog: MatDialog, private rest:RestService,private router:Router,private cookieService:CookieService,private globalEvents:GlobalEventsService) {
     //if the user has not logged in redirect them to login page
     if(!cookieService.check(AppConstants.jwtCookieName)){
       router.navigate(['/'+AppConstants.signInPath]);
@@ -68,6 +70,10 @@ export class CheckOutComponent implements OnInit {
 
   backToStore(){
     this.router.navigate(['/'+AppConstants.storePath]);
+  }
+
+  purchase(){
+    this.dialog.open(PurchaseComponent);
   }
 
 }

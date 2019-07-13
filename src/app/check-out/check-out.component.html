@@ -9,7 +9,7 @@
                     <app-product-row product={{product}} amount={{getItemAmount(product)}} 
                     price={{getProductPrice(product)}}></app-product-row>
                     <div style="min-height: 30px;"></div>
-                    <mat-divider style="margin-top: 100px;"></mat-divider>
+                    <mat-divider></mat-divider>
                 </mat-list-item>
             </mat-list>
             <div class="flexContainer" fxLayoutAlign="end" fxLayoutGap="32px">
@@ -17,12 +17,19 @@
                     Total: {{cart?.totalCost | currency: 'CAD'}}
                 </div>
             </div>
+            <div class="flexContainer" fxLayoutAlign="end" fxLayoutGap="32px" style="margin-top: 25px">
+                <button  style="margin-left: 35px" mat-raised-button (click)="purchase()">
+                    <mat-icon>check_circle</mat-icon>
+                    Check Out
+                </button>
+            </div>
+            
         </div>
         <!--Inform user they have no items in cart-->
         <div class="content" *ngIf="productsList && prices && productsList.length==0">
             <div class="message">
                 No Items In Cart 
-                <button  style="margin-left: 35px" mat-raised-button matBadge={{items}} matBadgePosition="before" matBadgeColor="accent" (click)="backToStore()">
+                <button  style="margin-left: 35px" mat-raised-button (click)="backToStore()">
                     <mat-icon>store</mat-icon>
                     Back To Store
                 </button>

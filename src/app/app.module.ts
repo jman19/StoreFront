@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './top-nav-bar/top-nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDividerModule,MatListModule,MatBadgeModule,MatPaginatorModule,MatDialogModule,MatButtonModule,MatIconModule,MatToolbarModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatCardModule} from '@angular/material';
+import {MatSelectModule,MatDividerModule,MatListModule,MatBadgeModule,MatPaginatorModule,MatDialogModule,MatButtonModule,MatIconModule,MatToolbarModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatCardModule} from '@angular/material';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule }    from '@angular/common/http';
@@ -21,6 +21,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { ProductRowComponent } from './product-row/product-row.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { ProductRowComponent } from './product-row/product-row.component';
     ProductCardComponent,
     ProductDetailsComponent,
     CheckOutComponent,
-    ProductRowComponent
+    ProductRowComponent,
+    PurchaseComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +58,10 @@ import { ProductRowComponent } from './product-row/product-row.component';
     MatPaginatorModule,
     MatBadgeModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
-  entryComponents:[AboutComponent,ProductDetailsComponent],
+  entryComponents:[AboutComponent,ProductDetailsComponent, PurchaseComponent],
   providers: [CookieService],
   bootstrap: [AppComponent]
 })

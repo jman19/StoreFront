@@ -20,7 +20,25 @@ export class ProductRowComponent implements OnInit {
   constructor(private rest:RestService,private router:Router,private globalEvents:GlobalEventsService,private cookieService:CookieService) {}
 
   ngOnInit() {
+    
     this.amountForm=new FormControl(this.amount,[Validators.required,Validators.min(1)]);
+
+    //update item amount if value is valid
+    this.amountForm.valueChanges.subscribe(change=>{
+      if(this.amountForm.valid){
+        var item={};
+        item[this.product]=change;
+        this.rest.addItemsToCart({"items":item,"set":true},this.cookieService.get(AppConstants.jwtCookieName)).subscribe(res=>{
+          this.globalEvents.add();
+        },err=>{
+          //the current token is invalid or expired make user login again
+          if(err.status==401){
+            this.cookieService.delete(AppConstants.jwtCookieName);
+            this.router.navigate(['/'+AppConstants.signInPath]);
+          }
+        });
+      }
+    })
   }
 
   removeItemFromCart(){

@@ -51,6 +51,16 @@ export class RestService {
     return this.http.patch<statusMessage>(base+'/cart',JSON.stringify(items),httpAuth);
   }
 
+  checkout(bearer:string): Observable<checkoutResponse>{
+    var httpAuth={
+      headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+bearer
+      })
+    };
+    return this.http.patch<checkoutResponse>(base+'/cart/checkout',null,httpAuth)
+  }
+
   //get basic product info such as price for a specific product
   getSpecificProduct(product:string): Observable<product>{
     return this.http.get<product>(base+'/product/{{product}}',httpOptions);
@@ -86,4 +96,9 @@ export interface addItems{
 export interface statusMessage{
   message:string,
   code:number
+}
+
+export interface checkoutResponse{
+  message:string,
+  total:number
 }
