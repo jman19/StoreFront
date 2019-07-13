@@ -60,7 +60,7 @@ export class PurchaseComponent implements OnInit {
     this.billingAddress=new FormControl('',[Validators.required]); 
     this.provinceSelected=new FormControl('',[Validators.required]); 
     this.postalCode=new FormControl('',[Validators.required]); 
-    this.PhoneNumber=new FormControl('',[Validators.required]); 
+    this.PhoneNumber=new FormControl('',[Validators.required,Validators.pattern(/[0-9]{3}-[0-9]{3}-[0-9]{4}/g)]); 
     this.cardNumber=new FormControl('',[Validators.required]); 
     this.cardExpireMonth=new FormControl('',[Validators.required]); 
     this.cardExpireYear=new FormControl('',[Validators.required]);
@@ -132,7 +132,9 @@ export class PurchaseComponent implements OnInit {
   }
 
   getPhoneError(){
-    return this.PhoneNumber.hasError('required') ? 'You must enter a value':''
+    return this.PhoneNumber.hasError('required') ? 'You must enter a value':
+    this.PhoneNumber.hasError('pattern') ? 'Not a valid phone number' :
+    '';
   }
 
   getCreditCardError(){

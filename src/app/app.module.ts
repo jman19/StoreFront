@@ -22,6 +22,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CheckOutComponent } from './check-out/check-out.component';
 import { ProductRowComponent } from './product-row/product-row.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import {PhonePipe} from './pipes/phonePipe'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import { PurchaseComponent } from './purchase/purchase.component';
     ProductDetailsComponent,
     CheckOutComponent,
     ProductRowComponent,
-    PurchaseComponent
+    PurchaseComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
