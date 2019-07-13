@@ -22,9 +22,8 @@ export class RestService {
     return this.http.post<loginResponse>(base+'/login',JSON.stringify(body),httpOptions);
   }
 
-  signUp(email:string,password:string): Observable<loginResponse>{
-    var body={email:email,password:password}
-    return this.http.post<loginResponse>(base+'/signUp',JSON.stringify(body),httpOptions);
+  signUp(input:signUp): Observable<loginResponse>{
+    return this.http.post<loginResponse>(base+'/signUp',JSON.stringify(input),httpOptions);
   }
 
   getProducts(hideOutOfStock:boolean): Observable<productResponse>{
@@ -101,4 +100,16 @@ export interface statusMessage{
 export interface checkoutResponse{
   message:string,
   total:number
+}
+
+export interface signUp{
+  email:string,
+  password:string,
+  firstName:string,
+  lastName:string,
+  city:string,
+  billingAddress:string,
+  province:string,
+  postalCode:string,
+  phone:string
 }

@@ -30,21 +30,9 @@ export class PurchaseComponent implements OnInit {
   cardExpireMonth:FormControl;
   cardExpireYear:FormControl;
 
-  months:string[]=["01","02","03","04","05","06","07","08","09","10","11","12"];
+  months:string[]=AppConstants.months;
   years:string[];
-  provincesList:string[]=["Alberta",
-                      "British Columbia",
-                      "Manitoba",
-                      "New Brunswick",
-                      "Newfoundland and Labrador",
-                      "Northwest Territories",
-                      "Nova Scotia",
-                      "Nunavut",
-                      "Ontario",
-                      "Prince Edward Island",
-                      "Quebec",
-                      "Saskatchewan",
-                      "Yukon"];
+  provincesList:string[]=AppConstants.provincesList;
 
   errorMessage:string="";
   error:boolean=false;

@@ -32,6 +32,68 @@
                                 <mat-error *ngIf="confirmPassword.invalid">{{getPassWordConfirmErrorMessage()}}</mat-error>
                         </mat-form-field>
                     </div>
+                    <mat-divider></mat-divider>
+                    <div style="min-height: 25px;"></div>
+                    <div class="flexContainer" style="justify-content: center;">
+                        <!--name-->
+                        <mat-form-field appearance="outline" style="width: 170px">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="First Name" type="text" [formControl]="firstName">
+                            <mat-icon matSuffix>account_circle</mat-icon>
+                            <mat-error *ngIf="firstName.invalid">{{getFirstNameError()}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width: 170px">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Last Name" type="text" [formControl]="lastName">
+                            <mat-error *ngIf="lastName.invalid">{{getLastNameError()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="flexContainer" style="justify-content: center;">
+                        <!--billing address-->
+                        <mat-form-field appearance="outline" style="width: 170px;">
+                            <mat-label>Billing Address</mat-label>
+                            <input matInput placeholder="Address" type="text" [formControl]="billingAddress">
+                            <mat-icon matSuffix>home</mat-icon>
+                            <mat-error *ngIf="billingAddress.invalid">{{getBillingAddressError()}}</mat-error>
+                        </mat-form-field>
+                        <!--province dropDown-->
+                        <mat-form-field appearance="outline" style="width: 170px">
+                            <mat-label>Province</mat-label>
+                            <mat-select [formControl]="provinceSelected">
+                                <mat-option *ngFor="let province of provincesList" [value]="province">
+                                    {{province}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="provinceSelected.invalid">You must Select a Value</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="flexContainer" style="justify-content: center">
+                        <!--city-->
+                        <mat-form-field appearance="outline" style="width: 170px">
+                            <mat-label>City</mat-label>
+                            <input matInput placeholder="City" type="text" [formControl]="city">
+                            <mat-icon matSuffix>location_city</mat-icon>
+                            <mat-error *ngIf="city.invalid">{{getCityError()}}</mat-error>
+                        </mat-form-field>
+                        <!--postalCode-->
+                        <mat-form-field appearance="outline" style="width: 170px">
+                                <mat-label>Postal Code</mat-label>
+                                <input matInput placeholder="Postal Code" type="text" [formControl]="postalCode">
+                                <mat-icon matSuffix>markunread_mailbox</mat-icon>
+                                <mat-error *ngIf="postalCode.invalid">{{getPostalCodeError()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <!--phone-->
+                    <div class="flexContainer" style="margin-left: 30px">
+                        <mat-form-field appearance="outline" style="width: 170px">
+                                <mat-label>Phone Number</mat-label>
+                                <input matInput placeholder="123-123-1234" type="tel" [formControl]="PhoneNumber" 
+                                value="{{PhoneNumber.value | phone}}"
+                                [maxLength]="12">
+                                <mat-icon matSuffix>phone</mat-icon>
+                                <mat-error *ngIf="PhoneNumber.invalid">{{getPhoneError()}}</mat-error>
+                        </mat-form-field>
+                    </div>
                     <!--The content below is for the sign up/sign in-->
                     <div class="groupRowCenter" style="margin-left: 20px">
                         <button mat-raised-button style="margin-right: 20px" (click)="submitSignUp()">
