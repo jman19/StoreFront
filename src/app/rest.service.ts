@@ -64,6 +64,17 @@ export class RestService {
   getSpecificProduct(product:string): Observable<product>{
     return this.http.get<product>(base+'/product/{{product}}',httpOptions);
   }
+
+  //get user info like address
+  getUserProfile(bearer:string): Observable<userInfo>{
+    var httpAuth={
+      headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+bearer
+      })
+    };
+    return this.http.get<userInfo>(base+'/user',httpAuth);
+  }
 }
 
 export interface loginResponse{
@@ -105,6 +116,17 @@ export interface checkoutResponse{
 export interface signUp{
   email:string,
   password:string,
+  firstName:string,
+  lastName:string,
+  city:string,
+  billingAddress:string,
+  province:string,
+  postalCode:string,
+  phone:string
+}
+
+export interface userInfo{
+  user:string,
   firstName:string,
   lastName:string,
   city:string,

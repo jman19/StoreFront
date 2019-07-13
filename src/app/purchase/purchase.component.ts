@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {AppConstants} from '../appConstants';
 import {GlobalEventsService} from '../global-events.service';
 import {RestService} from '../rest.service';
+import {ThankYouComponent} from '../thank-you/thank-you.component'
 
 @Component({
   selector: 'app-purchase',
@@ -42,6 +43,12 @@ export class PurchaseComponent implements OnInit {
     private rest:RestService,private router:Router,private globalEvents:GlobalEventsService) { }
 
   ngOnInit() {
+    //if the user has not logged in redirect them to login page
+    if(!this.cookieService.check(AppConstants.jwtCookieName)){
+      this.dialogRef.close();
+      this.router.navigate(['/'+AppConstants.signInPath]);
+    }
+
     this.firstName=new FormControl('',[Validators.required]);
     this.lastName=new FormControl('',[Validators.required]);
     this.city=new FormControl('',[Validators.required]);
@@ -53,6 +60,16 @@ export class PurchaseComponent implements OnInit {
     this.cardExpireMonth=new FormControl('',[Validators.required]); 
     this.cardExpireYear=new FormControl('',[Validators.required]);
     this.cardSecurityCode=new FormControl('',[Validators.required]);
+
+    this.rest.getUserProfile(this.cookieService.get(AppConstants.jwtCookieName)).subscribe(res=>{
+      this.firstName.setValue(res.firstName);
+      this.lastName.setValue(res.lastName);
+      this.city.setValue(res.city);
+      this.billingAddress.setValue(res.billingAddress);
+      this.provinceSelected.setValue(res.province);
+      this.postalCode.setValue(res.postalCode);
+      this.PhoneNumber.setValue(res.phone);
+    })
 
     this.purchaseForm=new FormGroup({
       firstName:this.firstName,
@@ -87,6 +104,7 @@ export class PurchaseComponent implements OnInit {
     }
     this.rest.checkout(this.cookieService.get(AppConstants.jwtCookieName)).subscribe(res=>{
       this.globalEvents.add();
+      this.dialog.open(ThankYouComponent);
       this.dialogRef.close();
     },err=>{
       //the current token is invalid or expired make user login again

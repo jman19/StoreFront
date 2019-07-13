@@ -22,7 +22,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CheckOutComponent } from './check-out/check-out.component';
 import { ProductRowComponent } from './product-row/product-row.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import {PhonePipe} from './pipes/phonePipe'
+import {PhonePipe} from './pipes/phonePipe';
+import { ThankYouComponent } from './thank-you/thank-you.component'
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {PhonePipe} from './pipes/phonePipe'
     CheckOutComponent,
     ProductRowComponent,
     PurchaseComponent,
-    PhonePipe
+    PhonePipe,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,7 @@ import {PhonePipe} from './pipes/phonePipe'
     MatDividerModule,
     MatSelectModule
   ],
-  entryComponents:[AboutComponent,ProductDetailsComponent, PurchaseComponent],
+  entryComponents:[AboutComponent,ProductDetailsComponent,PurchaseComponent,ThankYouComponent],
   providers: [CookieService],
   bootstrap: [AppComponent]
 })
