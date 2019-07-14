@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './top-nav-bar/top-nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSelectModule,MatDividerModule,MatListModule,MatBadgeModule,MatPaginatorModule,MatDialogModule,MatButtonModule,MatIconModule,MatToolbarModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatCardModule} from '@angular/material';
+import {MatTableModule,MatSelectModule,MatDividerModule,MatListModule,MatBadgeModule,MatPaginatorModule,MatDialogModule,MatButtonModule,MatIconModule,MatToolbarModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatCardModule} from '@angular/material';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule }    from '@angular/common/http';
@@ -23,7 +23,8 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { ProductRowComponent } from './product-row/product-row.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import {PhonePipe} from './pipes/phonePipe';
-import { ThankYouComponent } from './thank-you/thank-you.component'
+import { ThankYouComponent } from './thank-you/thank-you.component';
+import { OrderHistoryComponent } from './order-history/order-history.component'
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ThankYouComponent } from './thank-you/thank-you.component'
     ProductRowComponent,
     PurchaseComponent,
     PhonePipe,
-    ThankYouComponent
+    ThankYouComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { ThankYouComponent } from './thank-you/thank-you.component'
     MatBadgeModule,
     MatListModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   entryComponents:[AboutComponent,ProductDetailsComponent,PurchaseComponent,ThankYouComponent],
   providers: [CookieService],
