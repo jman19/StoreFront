@@ -19,15 +19,15 @@ export class RestService {
 
   login(email:string,password:string): Observable<loginResponse>{
     var body={email:email,password:password}
-    return this.http.post<loginResponse>(base+'/login',JSON.stringify(body),httpOptions);
+    return this.http.post<loginResponse>(base+'/auth/login',JSON.stringify(body),httpOptions);
   }
 
   signUp(input:signUp): Observable<loginResponse>{
-    return this.http.post<loginResponse>(base+'/signUp',JSON.stringify(input),httpOptions);
+    return this.http.post<loginResponse>(base+'/auth/signUp',JSON.stringify(input),httpOptions);
   }
 
   getProducts(hideOutOfStock:boolean): Observable<productResponse>{
-    return this.http.get<productResponse>(base+'/product'+'?'+'hideOutOfStock='+hideOutOfStock,httpOptions);
+    return this.http.get<productResponse>(base+'/shop/product'+'?'+'hideOutOfStock='+hideOutOfStock,httpOptions);
   }
 
   getCart(bearer:string): Observable<cart>{
@@ -37,7 +37,7 @@ export class RestService {
       'Authorization': 'Bearer '+bearer
       })
     };
-    return this.http.get<cart>(base+'/cart',httpAuth);
+    return this.http.get<cart>(base+'/user/cart',httpAuth);
   }
 
   addItemsToCart(items:addItems,bearer:string): Observable<statusMessage>{
@@ -47,7 +47,7 @@ export class RestService {
       'Authorization': 'Bearer '+bearer
       })
     };
-    return this.http.patch<statusMessage>(base+'/cart',JSON.stringify(items),httpAuth);
+    return this.http.patch<statusMessage>(base+'/user/cart',JSON.stringify(items),httpAuth);
   }
 
   checkout(bearer:string): Observable<checkoutResponse>{
@@ -57,12 +57,12 @@ export class RestService {
       'Authorization': 'Bearer '+bearer
       })
     };
-    return this.http.patch<checkoutResponse>(base+'/cart/checkout',null,httpAuth)
+    return this.http.patch<checkoutResponse>(base+'/user/cart/checkout',null,httpAuth)
   }
 
   //get basic product info such as price for a specific product
   getSpecificProduct(product:string): Observable<product>{
-    return this.http.get<product>(base+'/product/{{product}}',httpOptions);
+    return this.http.get<product>(base+'/shop/product/{{product}}',httpOptions);
   }
 
   //get user info like address
