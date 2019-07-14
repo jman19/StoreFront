@@ -27,6 +27,10 @@ export class TopNavBarComponent implements OnInit {
     this.router.navigate(['/'+AppConstants.signInPath]);
   }
 
+  toTracking(){
+    this.router.navigate(['/'+AppConstants.clientOrderHistory]);
+  }
+
   checkOut(){
     this.router.navigate(['/'+AppConstants.checkOutPath]);
   }

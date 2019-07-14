@@ -75,6 +75,17 @@ export class RestService {
     };
     return this.http.get<userInfo>(base+'/user',httpAuth);
   }
+
+  //get order history
+  getUserOrderHistory(bearer:string): Observable<orderHistoryList>{
+    var httpAuth={
+      headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+bearer
+      })
+    };
+    return this.http.get<orderHistoryList>(base+'/user/orderHistory',httpAuth);
+  }
 }
 
 export interface loginResponse{
@@ -134,4 +145,24 @@ export interface userInfo{
   province:string,
   postalCode:string,
   phone:string
+}
+
+export interface orderHistory{
+  email:string,
+  firstName:string,
+  lastName:string,
+  city:string,
+  billingAddress:string,
+  province:string,
+  postalCode:string,
+  phone:string,
+  fulfilled:boolean,
+  created:Date,
+  updatedOn:Date,
+  items:{[key:string]:number},
+  totalCost:number
+}
+
+export interface orderHistoryList{
+  fulfillment:orderHistory[]
 }

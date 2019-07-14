@@ -31,11 +31,6 @@ export class SignUpComponent implements OnInit {
 
   constructor(private rest:RestService, private cookieService:CookieService,private router:Router) {}
 
-  ngDoCheck(){
-    console.log(this.password.errors);
-    console.log(this.signUpForm.errors);
-  }
-
   ngOnInit() {
     this.error=false;
     this.email=new FormControl('',[Validators.required,Validators.email]);

@@ -1,4 +1,97 @@
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-    </table>
-</div>
+<body class="body">
+    <app-top-nav-bar></app-top-nav-bar>
+    <div class="scrollDiv">
+        <div class="content">
+            <table mat-table [dataSource]="orderHistory" multiTemplateDataRows style="width: 100%" *ngIf="orderHistory && orderHistory.length>0">
+                <!--Email Column-->
+                <ng-container matColumnDef="Email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <!--FirstName Column-->
+                <ng-container matColumnDef="First Name">
+                    <th mat-header-cell *matHeaderCellDef> First Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+                </ng-container>
+
+                <!--LastName Column-->
+                <ng-container matColumnDef="Last Name">
+                    <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                </ng-container>
+
+                <!--city Column-->
+                <ng-container matColumnDef="City">
+                    <th mat-header-cell *matHeaderCellDef> City </th>
+                    <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+                </ng-container>
+
+                <!--Billing Address Column-->
+                <ng-container matColumnDef="Billing Address">
+                    <th mat-header-cell *matHeaderCellDef> Billing Address </th>
+                    <td mat-cell *matCellDef="let element"> {{element.billingAddress}} </td>
+                </ng-container>
+
+                <!--Province Column-->
+                <ng-container matColumnDef="Province">
+                    <th mat-header-cell *matHeaderCellDef> Province </th>
+                    <td mat-cell *matCellDef="let element"> {{element.province}} </td>
+                </ng-container>
+
+                <!--Postal Code Column-->
+                <ng-container matColumnDef="Postal Code">
+                    <th mat-header-cell *matHeaderCellDef> Postal Code </th>
+                    <td mat-cell *matCellDef="let element"> {{element.postalCode}} </td>
+                </ng-container>
+
+                <!--Phone Column-->
+                <ng-container matColumnDef="Phone">
+                    <th mat-header-cell *matHeaderCellDef> Phone </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                </ng-container>
+
+                <!--Fulfilled Column-->
+                <ng-container matColumnDef="Fulfilled">
+                    <th mat-header-cell *matHeaderCellDef> Fulfilled </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <div class="flexContainer" *ngIf=!element.fulfilled style="color: rgb(179, 179, 0);">
+                            <mat-icon>autorenew</mat-icon> Pending
+                        </div>
+                        <div class="flexContainer" *ngIf=element.fulfilled style="color: green;">
+                            <mat-icon>check_circle</mat-icon> Shipped
+                        </div>
+                            
+                         
+                    </td>
+                </ng-container>
+
+                <!--Total Column-->
+                <ng-container matColumnDef="Total">
+                    <th mat-header-cell *matHeaderCellDef> Total </th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalCost | currency: 'CAD'}} </td>
+                </ng-container>
+
+                <!--Date column-->
+                <ng-container matColumnDef="Date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.created | date: 'yyyy/MM/dd'}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row class="element-row" *matRowDef="let row; columns: displayedColumns;" (click)="clickRow(row)"></tr>
+            </table>
+            <!--Inform user they have no item History-->
+            <div class="message" *ngIf="orderHistory && orderHistory.length==0">
+                No Items To Track
+                <button  style="margin-left: 35px" mat-raised-button (click)="backToStore()">
+                    <mat-icon>store</mat-icon>
+                    Back To Store
+                </button>
+            </div>
+
+        </div>
+        <div class="spacer"></div>
+        <app-footer></app-footer>   
+    </div>
+</body>

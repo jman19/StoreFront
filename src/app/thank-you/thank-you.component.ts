@@ -19,4 +19,9 @@ export class ThankYouComponent implements OnInit {
     this.router.navigate(['/'+AppConstants.storePath]);
     this.dialogRef.close();
   }
+
+  toTracking(){
+    this.router.navigate(['/'+AppConstants.clientOrderHistory]);
+    this.dialogRef.close();
+  }
 }

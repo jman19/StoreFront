@@ -1,0 +1,43 @@
+tr.element-row:not(.example-expanded-row):hover {
+    background: #777;
+    cursor: pointer;
+}
+  
+tr.element-row:not(.example-expanded-row):active {
+    background: #efefef;
+}
+
+.body{
+    display: flex;
+    overflow-y: hidden;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 500px;
+}
+
+.content{
+    min-height: 100%;
+    width: 100%;
+}
+
+.scrollDiv{
+    overflow-y: auto;
+    height: 100vh;
+    width: 100%;
+}
+
+.spacer{
+    height: 50px;
+    min-height: 50px;
+}
+
+.flexContainer{
+    flex-direction: row;
+    display: flex;
+    align-items: center
+}
+
+.message{
+    background-color:#F9F9FA;
+    padding: 30px;
+}
