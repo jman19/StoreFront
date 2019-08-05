@@ -8,6 +8,7 @@ import {OrderHistoryComponent} from './order-history/order-history.component';
 import {AppConstants} from './appConstants';
 
 const routes: Routes=[
+  {path:'',redirectTo:AppConstants.signInPath, pathMatch: 'full' },
   {path: AppConstants.signInPath, component: SignInComponent},
   {path: AppConstants.storePath, component: StoreComponent},
   {path: AppConstants.signUpPath, component: SignUpComponent},
