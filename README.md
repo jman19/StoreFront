@@ -1,5 +1,7 @@
 # StoreFront
-This is an angular project for a e-commerice store front it is powered by the [StoreFront API](https://github.com/jman19/storeApi) as its backend
+This is the Frontend of a e-commerce store front. The backend for this can be found here: [StoreFront API](https://github.com/jman19/storeApi).  
+
+The Frontend is written in TypeScript and uses the Angular framework. SASS (.scss) is used for styling the web app
 
 # Dependencies 
 angular cli
