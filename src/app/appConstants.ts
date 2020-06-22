@@ -5,6 +5,7 @@ export class AppConstants{
     public static storePath: string= "store";
     public static checkOutPath: string="checkOut";
     public static clientOrderHistory: string="orderHistory"
+    public static billingFormPath: string="billingEdit"
     public static provincesList:string[]=["Alberta",
                       "British Columbia",
                       "Manitoba",

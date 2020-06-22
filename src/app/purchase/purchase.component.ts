@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild,OnInit } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA,MatDialogRef} from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
@@ -6,7 +6,8 @@ import {Router} from '@angular/router';
 import {AppConstants} from '../appConstants';
 import {GlobalEventsService} from '../global-events.service';
 import {RestService} from '../rest.service';
-import {ThankYouComponent} from '../thank-you/thank-you.component'
+import {ThankYouComponent} from '../thank-you/thank-you.component';
+import {BillingFormComponent} from '../billing-form/billing-form.component'
 
 @Component({
   selector: 'app-purchase',
@@ -15,25 +16,16 @@ import {ThankYouComponent} from '../thank-you/thank-you.component'
 })
 export class PurchaseComponent implements OnInit {
   purchaseForm:FormGroup;
-
-  firstName: FormControl;
-  lastName: FormControl;
-  billingAddress: FormControl;
-  city: FormControl;
-  subCountry:FormControl;
-  PhoneNumber: FormControl;
-  postalCode:FormControl;
-  provinceSelected:FormControl;
-
   //credit card
   cardNumber:FormControl;
   cardSecurityCode:FormControl;
   cardExpireMonth:FormControl;
   cardExpireYear:FormControl;
+  billingForm:any
+  
 
   months:string[]=AppConstants.months;
   years:string[];
-  provincesList:string[]=AppConstants.provincesList;
 
   errorMessage:string="";
   error:boolean=false;
@@ -48,41 +40,17 @@ export class PurchaseComponent implements OnInit {
       this.dialogRef.close();
       this.router.navigate(['/'+AppConstants.signInPath]);
     }
-
-    this.firstName=new FormControl('',[Validators.required]);
-    this.lastName=new FormControl('',[Validators.required]);
-    this.city=new FormControl('',[Validators.required]);
-    this.billingAddress=new FormControl('',[Validators.required]); 
-    this.provinceSelected=new FormControl('',[Validators.required]); 
-    this.postalCode=new FormControl('',[Validators.required]); 
-    this.PhoneNumber=new FormControl('',[Validators.required,Validators.pattern(/[0-9]{3}-[0-9]{3}-[0-9]{4}/g)]); 
     this.cardNumber=new FormControl('',[Validators.required]); 
     this.cardExpireMonth=new FormControl('',[Validators.required]); 
     this.cardExpireYear=new FormControl('',[Validators.required]);
     this.cardSecurityCode=new FormControl('',[Validators.required]);
 
-    this.rest.getUserProfile(this.cookieService.get(AppConstants.jwtCookieName)).subscribe(res=>{
-      this.firstName.setValue(res.firstName);
-      this.lastName.setValue(res.lastName);
-      this.city.setValue(res.city);
-      this.billingAddress.setValue(res.billingAddress);
-      this.provinceSelected.setValue(res.province);
-      this.postalCode.setValue(res.postalCode);
-      this.PhoneNumber.setValue(res.phone);
-    })
-
     this.purchaseForm=new FormGroup({
-      firstName:this.firstName,
-      lastName:this.lastName,
-      city:this.city,
-      billingAddress:this.billingAddress,
-      province:this.provinceSelected,
-      postalCode:this.postalCode,
-      phone:this.PhoneNumber,
       cardNumber:this.cardNumber,
       cardExpireMonth:this.cardExpireMonth,
       cardExpireYear:this.cardExpireYear,
-      cardSecurityCode:this.cardSecurityCode
+      cardSecurityCode:this.cardSecurityCode,
+      billingAddress:new FormControl
     });
     this.setYearList();
   }
@@ -95,6 +63,9 @@ export class PurchaseComponent implements OnInit {
       this.years.push((currentYear+i).toString())
     }
 
+  }
+  ngDoCheck(){
+    console.log(this.purchaseForm)
   }
 
   purchase(){
@@ -115,32 +86,6 @@ export class PurchaseComponent implements OnInit {
       this.error=true;
       this.errorMessage=err.error.message;
     });
-  }
-
-  getFirstNameError(){
-    return this.firstName.hasError('required') ? 'You must enter a value':''
-  }
-
-  getLastNameError(){
-    return this.lastName.hasError('required') ? 'You must enter a value':''
-  }
-
-  getCityError(){
-    return this.city.hasError('required') ? 'You must enter a value':''
-  }
-
-  getBillingAddressError(){
-    return this.billingAddress.hasError('required') ? 'You must enter a value':''
-  }
-
-  getPostalCodeError(){
-    return this.postalCode.hasError('required') ? 'You must enter a value':''
-  }
-
-  getPhoneError(){
-    return this.PhoneNumber.hasError('required') ? 'You must enter a value':
-    this.PhoneNumber.hasError('pattern') ? 'Not a valid phone number' :
-    '';
   }
 
   getCreditCardError(){

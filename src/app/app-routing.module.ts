@@ -6,6 +6,7 @@ import {StoreComponent} from './store/store.component';
 import {CheckOutComponent} from './check-out/check-out.component';
 import {OrderHistoryComponent} from './order-history/order-history.component';
 import {AppConstants} from './appConstants';
+import {BillingFormComponent} from './billing-form/billing-form.component';
 
 const routes: Routes=[
   {path:'',redirectTo:AppConstants.signInPath, pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes=[
   {path: AppConstants.storePath, component: StoreComponent},
   {path: AppConstants.signUpPath, component: SignUpComponent},
   {path: AppConstants.checkOutPath, component: CheckOutComponent},
-  {path: AppConstants.clientOrderHistory, component: OrderHistoryComponent}
+  {path: AppConstants.clientOrderHistory, component: OrderHistoryComponent},
+  {path: AppConstants.billingFormPath, component:BillingFormComponent}
 ];
 
 @NgModule({

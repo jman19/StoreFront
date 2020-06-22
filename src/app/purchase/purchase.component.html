@@ -1,4 +1,4 @@
-<div style="padding: 10px">
+<form [formGroup]="purchaseForm" style="padding: 10px">
     <div mat-dialog-content>
         <h4>PAYMENT</h4>
         <mat-divider style="margin-bottom: 25px"></mat-divider>
@@ -40,72 +40,7 @@
                 </mat-form-field>
             </div>
         </div>
-        <h4>BILLING INFORMATION</h4>
-        <mat-divider style="margin-bottom: 25px"></mat-divider>
-        <!--row1-->
-        <div class="flexContainer" fxLayoutGap="60px">
-            <!--name-->
-            <div class="flexContainer">
-                <mat-form-field appearance="outline">
-                    <mat-label>First Name</mat-label>
-                    <input matInput placeholder="First Name" type="text" [formControl]="firstName">
-                    <mat-icon matSuffix>account_circle</mat-icon>
-                    <mat-error *ngIf="firstName.invalid">{{getFirstNameError()}}</mat-error>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Last Name" type="text" [formControl]="lastName">
-                    <mat-error *ngIf="lastName.invalid">{{getLastNameError()}}</mat-error>
-                </mat-form-field>
-            </div>
-            <!--city-->
-            <mat-form-field appearance="outline">
-                <mat-label>City</mat-label>
-                <input matInput placeholder="City" type="text" [formControl]="city">
-                <mat-icon matSuffix>location_city</mat-icon>
-                <mat-error *ngIf="city.invalid">{{getCityError()}}</mat-error>
-            </mat-form-field>
-        </div>
-        <!--row2-->
-        <div class="flexContainer" fxLayoutGap="60px">
-            <div class="flexContainer">
-                <!--billing address-->
-                <mat-form-field appearance="outline">
-                    <mat-label>Billing Address</mat-label>
-                    <input matInput placeholder="Address" type="text" [formControl]="billingAddress">
-                    <mat-icon matSuffix>home</mat-icon>
-                    <mat-error *ngIf="billingAddress.invalid">{{getBillingAddressError()}}</mat-error>
-                </mat-form-field>
-                <!--province dropDown-->
-                <mat-form-field appearance="outline">
-                    <mat-label>Province</mat-label>
-                    <mat-select [formControl]="provinceSelected">
-                        <mat-option *ngFor="let province of provincesList" [value]="province">
-                            {{province}}
-                        </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="provinceSelected.invalid">You must Select a Value</mat-error>
-                </mat-form-field>
-            </div>
-            <!--postalCode-->
-            <mat-form-field appearance="outline">
-                    <mat-label>Postal Code</mat-label>
-                    <input matInput placeholder="Postal Code" type="text" [formControl]="postalCode">
-                    <mat-icon matSuffix>markunread_mailbox</mat-icon>
-                    <mat-error *ngIf="postalCode.invalid">{{getPostalCodeError()}}</mat-error>
-            </mat-form-field>
-        </div>
-        <!--row3-->
-        <div class="flexContainer">
-            <mat-form-field appearance="outline">
-                    <mat-label>Phone Number</mat-label>
-                    <input matInput placeholder="123-123-1234" type="tel" [formControl]="PhoneNumber" 
-                    value="{{PhoneNumber.value | phone}}"
-                    [maxLength]="12">
-                    <mat-icon matSuffix>phone</mat-icon>
-                    <mat-error *ngIf="PhoneNumber.invalid">{{getPhoneError()}}</mat-error>
-            </mat-form-field>
-        </div>
+        <app-billing-form formControlName="billingAddress"></app-billing-form>
         <!--confirm-->
         <mat-divider style="margin-bottom: 25px"></mat-divider>
         <div style="margin-bottom: 25px;" *ngIf=error>
@@ -117,4 +52,4 @@
             </button>
         </div>
     </div>
-</div>
+</form>

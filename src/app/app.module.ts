@@ -24,7 +24,8 @@ import { ProductRowComponent } from './product-row/product-row.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import {PhonePipe} from './pipes/phonePipe';
 import { ThankYouComponent } from './thank-you/thank-you.component';
-import { OrderHistoryComponent } from './order-history/order-history.component'
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { BillingFormComponent } from './billing-form/billing-form.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { OrderHistoryComponent } from './order-history/order-history.component'
     PurchaseComponent,
     PhonePipe,
     ThankYouComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    BillingFormComponent
   ],
   imports: [
     BrowserModule,
